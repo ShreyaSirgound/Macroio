@@ -2,9 +2,10 @@ package com.example.application.views.list.InfoViews;
 
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.combobox.ComboBox;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.NumberField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
@@ -14,22 +15,33 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class InfoPage1 extends VerticalLayout {
 
+    protected static int age;
+
 	public InfoPage1(){
 		setSizeFull(); 
 		setAlignItems(Alignment.CENTER);
 		setJustifyContentMode(JustifyContentMode.CENTER);
 
-        ComboBox<String> comboBox = new ComboBox<>("Enter birth year");
-        comboBox.setAllowCustomValue(true);
-        add(comboBox);
-        comboBox.setItems("2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006");
-        comboBox.getStyle().set("--vaadin-combo-box-width", "550px");
+        NumberField ageField = new NumberField();
+        ageField.setLabel("Enter your age");
+         Div ageSuffix = new Div();
+        ageSuffix.setText("years");
+        ageField.setSuffixComponent(ageSuffix);
 
-		add(new H1("What year were you born?"), comboBox);
+		add(new H1("How old are you?"), ageField);
+
+        ageField.addValueChangeListener(event -> {
+            InfoPage1.age = event.getValue().intValue();
+            System.out.println(InfoPage1.age + " in");
+        });
 
         Button continueButton = new Button("Continue");
-        continueButton.addClickListener( e -> UI.getCurrent().navigate(InfoPage2.class));
+        continueButton.addClickListener( e -> {
+            System.out.println(InfoPage1.age + " cont");
+            UI.getCurrent().navigate(InfoPage2.class);
+        });
         add(continueButton);
+
 	}
 
 }

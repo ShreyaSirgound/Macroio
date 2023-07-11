@@ -16,6 +16,10 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class InfoPage2 extends VerticalLayout {
 
+    protected static String sex;
+    protected static int height;
+    protected static int weight;
+
 	public InfoPage2(){
         setSizeFull(); 
 		setAlignItems(Alignment.CENTER);
@@ -34,6 +38,11 @@ public class InfoPage2 extends VerticalLayout {
         heightSuffix.setText("inches");
         heightField.setSuffixComponent(heightSuffix);
 
+        heightField.addValueChangeListener(event -> {
+                InfoPage2.height = event.getValue().intValue();
+                System.out.println(InfoPage2.height);
+        });
+
         //Weight field
         NumberField weightField = new NumberField();
         weightField.setLabel("Weight");
@@ -42,10 +51,22 @@ public class InfoPage2 extends VerticalLayout {
         weightSuffix.setText("kilograms");
         weightField.setSuffixComponent(weightSuffix);
 
-		add(new H1("A little bit more about you"), radioGroup, heightField, weightField);
+        weightField.addValueChangeListener(event -> {
+                InfoPage2.weight = event.getValue().intValue();
+                System.out.println(InfoPage2.weight);
+        });
+
+		add(new H1("A little bit more about you..."), radioGroup, heightField, weightField);
 
         Button continueButton = new Button("Continue");
-        continueButton.addClickListener( e -> UI.getCurrent().navigate(InfoPage3.class));
+        continueButton.addClickListener( e -> {
+            //takes in selected sex field option
+            InfoPage2.sex = radioGroup.getValue();
+            System.out.println(InfoPage2.sex);
+
+            //redirects to info page 3
+            UI.getCurrent().navigate(InfoPage3.class);
+        });
         add(continueButton);
 
     }

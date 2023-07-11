@@ -2,26 +2,27 @@ package com.example.application.views.list;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class User {
     /** 
      * The user's name
      */
-    private String name;
+    private static String name;
 
     /**
      * The user's age
      */
-    private int age;
+    private static int age;
 
     /**
      * The user's weight
      */
-    private int weight;
+    private static int weight;
     /**
      * The user's height
      */
-	private int height;
+	private static int height;
 
 	/**
      * The user's password
@@ -32,24 +33,29 @@ public class User {
     /**
      * The user's sex
      */
-    private boolean sex;
+    private static String sex;
 
     /**
      * The user's dietary preferences (list of all selected)
      */
-    private List<String> diet;
+    private static Set<String> diet;
+
+    /**
+     * The user's general activity level
+     */
+    private static String activity;
 
      /**
       * Creates a new user object
       */
-    public User(String name, int age, int height, int weight, String password, boolean sex, List<String> diet){
+    public User(String name, int age, int height, int weight, String sex, Set<String> diet, String activity){
         this.name = name;
         this.age = age;
-        this.password = password;
         this.height = height;
         this.weight = weight;
         this.sex = sex;
         this.diet = diet;
+        this.activity = activity;
     }
 
     public String getName(){
@@ -92,20 +98,33 @@ public class User {
         this.weight = weight;
     }
 
-    public boolean getSex() {
+    public String getSex() {
     	return sex;
     }
     
-    public void setSex(boolean sex) {
+    public void setSex(String sex) {
     	this.sex = sex;
     }
 
-    public List<String> getDiet() {
+    public Set<String> getDiet() {
     	return diet;
     }
     
-    public void setDiet(List<String> diet) {
+    public void setDiet(Set<String> diet) {
     	this.diet = diet;
+    }
+
+    public String getActivity() {
+    	return activity;
+    }
+    
+    public void setActivity(String activity) {
+    	this.activity = activity;
+    }
+
+    public static String userToString(User user) {
+        String curUser = name + " " + age + " " + height + " " + weight + " " + sex + " " + diet + " " + activity;
+        return curUser;
     }
 
     //creates a list of all the users

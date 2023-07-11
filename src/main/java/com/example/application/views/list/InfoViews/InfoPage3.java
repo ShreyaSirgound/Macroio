@@ -1,5 +1,7 @@
 package com.example.application.views.list.InfoViews;
 
+import java.util.Set;
+
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.CheckboxGroup;
@@ -14,6 +16,8 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class InfoPage3 extends VerticalLayout {
 
+    protected static Set<String> diets;
+
 	public InfoPage3(){
 		setSizeFull(); 
 		setAlignItems(Alignment.CENTER);
@@ -27,7 +31,14 @@ public class InfoPage3 extends VerticalLayout {
 		add(new H1("What are your dietary preferences?"), dietCheck);
 
         Button continueButton = new Button("Continue");
-        continueButton.addClickListener( e -> UI.getCurrent().navigate(InfoPage5.class));
+        continueButton.addClickListener( e -> {
+            //takes in slected diet preferences from the user
+            InfoPage3.diets = dietCheck.getSelectedItems();
+            System.out.println(diets);
+
+            //redirects to info page 4
+            UI.getCurrent().navigate(InfoPage4.class);
+        });
         add(continueButton);
 	}
 
