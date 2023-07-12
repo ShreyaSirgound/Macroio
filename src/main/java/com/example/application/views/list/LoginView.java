@@ -27,6 +27,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
 		add(new H1("macroio"), login);
 	}
 
+	
 	@Override
 	public void beforeEnter(BeforeEnterEvent beforeEnterEvent) {
 		// inform the user about an authentication error

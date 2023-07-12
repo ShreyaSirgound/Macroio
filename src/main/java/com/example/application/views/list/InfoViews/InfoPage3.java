@@ -32,7 +32,7 @@ public class InfoPage3 extends VerticalLayout {
 
         Button continueButton = new Button("Continue");
         continueButton.addClickListener( e -> {
-            //takes in slected diet preferences from the user
+            //takes in selected diet preferences from the user
             InfoPage3.diets = dietCheck.getSelectedItems();
             System.out.println(diets);
 

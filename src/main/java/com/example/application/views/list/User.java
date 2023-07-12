@@ -24,12 +24,6 @@ public class User {
      */
 	private static int height;
 
-	/**
-     * The user's password
-     */
-	
-	private String password;
-
     /**
      * The user's sex
      */
@@ -45,17 +39,24 @@ public class User {
      */
     private static String activity;
 
+    /**
+     * The user's password
+     */
+	
+	private static String password;
+
      /**
       * Creates a new user object
       */
-    public User(String name, int age, int height, int weight, String sex, Set<String> diet, String activity){
-        this.name = name;
-        this.age = age;
-        this.height = height;
-        this.weight = weight;
-        this.sex = sex;
-        this.diet = diet;
-        this.activity = activity;
+    public User(String name, int age, int height, int weight, String sex, Set<String> diet, String activity, String password){
+        User.name = name;
+        User.age = age;
+        User.height = height;
+        User.weight = weight;
+        User.sex = sex;
+        User.diet = diet;
+        User.activity = activity;
+        User.password = password;
     }
 
     public String getName(){
@@ -63,7 +64,7 @@ public class User {
     }
 
     public void setName(String name){
-        this.name = name;
+        User.name = name;
     }
 
     public int getAge() {
@@ -71,15 +72,7 @@ public class User {
     }
     
     public void setAge(int age) {
-    	this.age = age;
-    }
-    
-    public String getPassword() {
-    	return password;
-    }
-    
-    public void setPassword(String password) {
-    	this.password = password;
+    	User.age = age;
     }
     
     public int getHeight(){
@@ -87,7 +80,7 @@ public class User {
     }
 
     public void setHeight(int height){
-        this.height = height;
+        User.height = height;
     }
 
     public int getWeight(){
@@ -95,7 +88,7 @@ public class User {
     }
 
     public void setWeight(int weight){
-        this.weight = weight;
+        User.weight = weight;
     }
 
     public String getSex() {
@@ -103,7 +96,7 @@ public class User {
     }
     
     public void setSex(String sex) {
-    	this.sex = sex;
+    	User.sex = sex;
     }
 
     public Set<String> getDiet() {
@@ -111,7 +104,7 @@ public class User {
     }
     
     public void setDiet(Set<String> diet) {
-    	this.diet = diet;
+    	User.diet = diet;
     }
 
     public String getActivity() {
@@ -119,11 +112,19 @@ public class User {
     }
     
     public void setActivity(String activity) {
-    	this.activity = activity;
+    	User.activity = activity;
+    }
+
+    public String getPassword() {
+    	return password;
+    }
+    
+    public void setPassword(String password) {
+    	User.password = password;
     }
 
     public static String userToString(User user) {
-        String curUser = name + " " + age + " " + height + " " + weight + " " + sex + " " + diet + " " + activity;
+        String curUser = name + " " + age + " " + height + " " + weight + " " + sex + " " + diet + " " + activity + " " + password;
         return curUser;
     }
 

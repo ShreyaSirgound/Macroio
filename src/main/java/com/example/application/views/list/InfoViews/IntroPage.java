@@ -1,10 +1,12 @@
 package com.example.application.views.list.InfoViews;
 
+import com.example.application.views.list.User;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.auth.AnonymousAllowed;
@@ -14,20 +16,19 @@ import com.vaadin.flow.server.auth.AnonymousAllowed;
 @AnonymousAllowed
 public class IntroPage extends VerticalLayout {
 
-     public static String username;
+     protected static String username;
 
 	public IntroPage(){
 		setSizeFull(); 
 		setAlignItems(Alignment.CENTER);
 		setJustifyContentMode(JustifyContentMode.CENTER);
 
-		add(new H1("Let's learn a bit about you"));
-
         TextField nameField = new TextField();
         nameField.setLabel("Enter your name");
         nameField.setValue("Mickey Mouse");
         nameField.setClearButtonVisible(true);
-        add(nameField);
+        
+        add(new H1("Let's learn a bit about you"), nameField);
 
         nameField.addValueChangeListener(event -> {
             IntroPage.username = event.getValue();
