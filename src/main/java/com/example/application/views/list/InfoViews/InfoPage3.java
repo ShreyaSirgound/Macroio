@@ -27,6 +27,7 @@ public class InfoPage3 extends VerticalLayout {
         dietCheck.setLabel("Please select all that apply");
         dietCheck.setItems("Vegan", "Vegetarian", "Non-Vegetarian", "Keto", "Pescatarian" );
         dietCheck.select("Vegan");
+        dietCheck.setRequired(true);
 
 		add(new H1("What are your dietary preferences?"), dietCheck);
 

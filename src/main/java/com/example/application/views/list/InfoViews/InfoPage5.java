@@ -23,8 +23,9 @@ public class InfoPage5 extends VerticalLayout {
 
         TextField passwordField = new TextField();
         passwordField.setLabel("Enter password");
+        passwordField.setRequired(true);
 
-		add(new H1("Lastly, create a password for your account"), passwordField);
+		add(new H1("Create a password for your account"), passwordField);
 
         passwordField.addValueChangeListener(event -> {
             InfoPage5.password = event.getValue();

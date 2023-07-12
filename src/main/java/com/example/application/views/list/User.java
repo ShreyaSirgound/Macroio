@@ -13,7 +13,7 @@ public class User {
     /**
      * The user's age
      */
-    private static int age;
+    private static double age;
 
     /**
      * The user's weight
@@ -67,11 +67,11 @@ public class User {
         User.name = name;
     }
 
-    public int getAge() {
+    public double getAge() {
     	return age;
     }
     
-    public void setAge(int age) {
+    public void setAge(double age) {
     	User.age = age;
     }
     

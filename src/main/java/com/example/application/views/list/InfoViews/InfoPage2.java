@@ -29,6 +29,7 @@ public class InfoPage2 extends VerticalLayout {
         RadioButtonGroup<String> radioGroup = new RadioButtonGroup<>();
         radioGroup.setLabel("Sex");
         radioGroup.setItems("Female", "Male");
+        radioGroup.setRequired(true);
 
         //Height field
         NumberField heightField = new NumberField();
@@ -37,6 +38,7 @@ public class InfoPage2 extends VerticalLayout {
         Div heightSuffix = new Div();
         heightSuffix.setText("inches");
         heightField.setSuffixComponent(heightSuffix);
+        heightField.setRequired(true);
 
         heightField.addValueChangeListener(event -> {
                 InfoPage2.height = event.getValue().intValue();
@@ -50,6 +52,7 @@ public class InfoPage2 extends VerticalLayout {
         Div weightSuffix = new Div();
         weightSuffix.setText("kilograms");
         weightField.setSuffixComponent(weightSuffix);
+        weightField.setRequired(true);
 
         weightField.addValueChangeListener(event -> {
                 InfoPage2.weight = event.getValue().intValue();
