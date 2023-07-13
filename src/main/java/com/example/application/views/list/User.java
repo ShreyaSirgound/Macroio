@@ -18,11 +18,11 @@ public class User {
     /**
      * The user's weight
      */
-    private static int weight;
+    private static double weight;
     /**
      * The user's height
      */
-	private static int height;
+	private static double height;
 
     /**
      * The user's sex
@@ -48,7 +48,7 @@ public class User {
      /**
       * Creates a new user object
       */
-    public User(String name, int age, int height, int weight, String sex, Set<String> diet, String activity, String password){
+    public User(String name, double age, double height, double weight, String sex, Set<String> diet, String activity, String password){
         User.name = name;
         User.age = age;
         User.height = height;
@@ -75,19 +75,19 @@ public class User {
     	User.age = age;
     }
     
-    public int getHeight(){
+    public double getHeight(){
         return height;
     }
 
-    public void setHeight(int height){
+    public void setHeight(double height){
         User.height = height;
     }
 
-    public int getWeight(){
+    public double getWeight(){
         return weight;
     }
 
-    public void setWeight(int weight){
+    public void setWeight(double weight){
         User.weight = weight;
     }
 
