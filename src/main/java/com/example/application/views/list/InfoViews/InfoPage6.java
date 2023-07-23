@@ -1,6 +1,7 @@
 package com.example.application.views.list.InfoViews;
 
 import com.example.application.views.list.DashboardView;
+import com.example.application.views.list.LoginView;
 import com.example.application.views.list.User;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -29,7 +30,7 @@ public class InfoPage6 extends VerticalLayout {
 			System.out.println(User.userToString(curUser));
 			
 			//redirects to the dashboard view
-			UI.getCurrent().navigate(DashboardView.class);
+			UI.getCurrent().navigate(LoginView.class);
 		});
         add(continueButton);
 	}
