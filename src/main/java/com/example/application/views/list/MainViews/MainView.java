@@ -1,24 +1,19 @@
-package com.example.application.views.list;
+package com.example.application.views.list.MainViews;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.tabs.Tabs;
-import com.vaadin.flow.router.PageTitle;
-import com.vaadin.flow.router.Route;
-import com.vaadin.flow.server.auth.AnonymousAllowed;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.router.RouterLink;
 
-@Route("dashboard") 
-@PageTitle("Dashboard | macroio")
-@AnonymousAllowed
-public class DashboardView extends AppLayout{
+public class MainView extends AppLayout{
 
-    public DashboardView() {
+    public MainView() {
         DrawerToggle toggle = new DrawerToggle();
 
         H1 title = new H1("Macroio");
@@ -33,16 +28,18 @@ public class DashboardView extends AppLayout{
 
     private Tabs getTabs() {
         Tabs tabs = new Tabs();
-        tabs.add(createTab(VaadinIcon.DASHBOARD, "Dashboard"),
-                createTab(VaadinIcon.USER_HEART, "Account"),
-                createTab(VaadinIcon.LIST, "Tracker"),
-                createTab(VaadinIcon.RECORDS, "Explore"),
-                createTab(VaadinIcon.CHART, "Analytics"));
+        tabs.add(
+                createTab(VaadinIcon.DASHBOARD, "Dashboard", DashboardView.class),
+                createTab(VaadinIcon.USER_HEART, "Account", AccountView.class),
+                createTab(VaadinIcon.LIST, "Tracker", TrackerView.class),
+                createTab(VaadinIcon.RECORDS, "Explore", ExploreView.class),
+                createTab(VaadinIcon.CHART, "Analytics", AnalyticsView.class)
+                );
         tabs.setOrientation(Tabs.Orientation.VERTICAL);
         return tabs;
     }
 
-    private Tab createTab(VaadinIcon viewIcon, String viewName) {
+    private Tab createTab(VaadinIcon viewIcon, String viewName, Class<? extends Component> viewClass) {
         Icon icon = viewIcon.create();
         icon.getStyle().set("box-sizing", "border-box")
                 .set("margin-inline-end", "var(--lumo-space-m)")
@@ -51,8 +48,7 @@ public class DashboardView extends AppLayout{
 
         RouterLink link = new RouterLink();
         link.add(icon, new Span(viewName));
-        // Demo has no routes
-        // link.setRoute(viewClass.java);
+        link.setRoute(viewClass);
         link.setTabIndex(-1);
 
         return new Tab(link);

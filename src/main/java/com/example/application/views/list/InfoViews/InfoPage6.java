@@ -1,8 +1,8 @@
 package com.example.application.views.list.InfoViews;
 
-import com.example.application.views.list.DashboardView;
 import com.example.application.views.list.LoginView;
 import com.example.application.views.list.User;
+import com.example.application.views.list.MainViews.DashboardView;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H1;
@@ -29,7 +29,7 @@ public class InfoPage6 extends VerticalLayout {
 			User curUser = new User(IntroPage.username, InfoPage1.age, InfoPage2.height, InfoPage2.weight, InfoPage2.sex, InfoPage3.diets, InfoPage4.activity, InfoPage5.password);
 			System.out.println(User.userToString(curUser));
 			
-			//redirects to the dashboard view
+			//redirects to the login view
 			UI.getCurrent().navigate(LoginView.class);
 		});
         add(continueButton);
